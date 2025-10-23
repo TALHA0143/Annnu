@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Annu ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            background: radial-gradient(circle at center, #1a0000 0%, #000 70%);
+        }
+
+        /* Enhanced Heart Design */
+        .heart-container {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 180px;
+            z-index: 10;
+            filter: drop-shadow(0 0 25px rgba(255, 0, 0, 0.7));
+        }
+
+        .heart {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            animation: heartbeat 1.2s ease-in-out infinite, floatHeart 4s ease-in-out infinite;
+        }
+
+        .heart:before,
+        .heart:after {
+            position: absolute;
+            content: "";
+            left: 100px;
+            top: 0;
+            width: 100px;
+            height: 160px;
+            background: linear-gradient(45deg, #ff1a1a, #ff6666);
+            border-radius: 100px 100px 0 0;
+            transform: rotate(-45deg);
+            transform-origin: 0 100%;
+            box-shadow: 
+                0 0 30px #ff0000,
+                0 0 60px rgba(255, 0, 0, 0.8),
+                inset -10px -10px 20px rgba(0, 0, 0, 0.3),
+                inset 5px 5px 10px rgba(255, 255, 255, 0.2);
+        }
+
+        .heart:after {
+            left: 0;
+            transform: rotate(45deg);
+            transform-origin: 100% 100%;
+        }
+
+        .heart-inner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%;
+            z-index: 2;
+            animation: innerGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes heartbeat {
+            0%, 50%, 100% { transform: scale(1); }
+            10%, 40% { transform: scale(1.18); }
+        }
+        
+        @keyframes floatHeart {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-10px) rotate(-2deg); }
+            75% { transform: translateY(-5px) rotate(2deg); }
+        }
+
+        @keyframes innerGlow {
+            0% { opacity: 0.4; transform: translate(-50%, -50%) scale(0.8); }
+            100% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.2); }
+        }
+
+        /* Heart glow effect */
+        .heart-glow {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 280px;
+            height: 280px;
+            background: radial-gradient(circle, rgba(255,0,0,0.6) 0%, rgba(255,0,0,0) 70%);
+            border-radius: 50%;
+            filter: blur(25px);
+            animation: glowPulse 1.8s infinite alternate;
+            z-index: 5;
+        }
+
+        @keyframes glowPulse {
+            0% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
+            100% { opacity: 0.7; transform: translate(-50%, -50%) scale(1.4); }
+        }
+
+        /* Message styling */
+        .message {
+            position: absolute;
+            top: 70%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 20;
+            width: 90%;
+            max-width: 800px;
+        }
+
+        .sorry-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4.5rem;
+            color: #ff1a1a;
+            text-shadow: 
+                0 0 15px #ff0000,
+                0 0 30px #ff0000,
+                0 0 45px #ff0000;
+            margin-bottom: 5px;
+            animation: textGlow 1.5s ease-in-out infinite alternate;
+        }
+
+        .name-text {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem;
+            color: #ff6666;
+            text-shadow: 
+                0 0 10px #ff3333,
+                0 0 20px rgba(255, 0, 0, 0.8);
+            letter-spacing: 2px;
+            animation: floatText 2s ease-in-out infinite;
+            margin-bottom: 10px;
+        }
+
+        .romantic-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: #ff9999;
+            text-shadow: 0 0 8px rgba(255, 0, 0, 0.6);
+            line-height: 1.4;
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .text-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease;
+        }
+
+        .text-line.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes textGlow {
+            0% { 
+                text-shadow: 
+                    0 0 10px #ff0000,
+                    0 0 20px #ff0000;
+                transform: scale(1);
+            }
+            100% { 
+                text-shadow: 
+                    0 0 20px #ff0000,
+                    0 0 40px #ff0000,
+                    0 0 60px #ff0000;
+                transform: scale(1.08);
+            }
+        }
+
+        @keyframes floatText {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Background elements */
+        .background-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .floating-heart {
+            position: absolute;
+            color: #ff0000;
+            font-size: 20px;
+            opacity: 0;
+            text-shadow: 0 0 12px #ff0000;
+            animation: floatUp 4s linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) rotate(0deg) scale(0.6);
+                opacity: 0;
+            }
+            20% {
+                opacity: 1;
+            }
+            80% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg) scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        /* Enhanced particles */
+        .particle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: #ff3333;
+            border-radius: 50%;
+            box-shadow: 0 0 15px #ff0000;
+            animation: sparkle 2s infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0) rotate(0deg); }
+            50% { opacity: 1; transform: scale(1.3) rotate(180deg); }
+        }
+        
+        /* Additional heart animations */
+        .heartbeat-line {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 50, 50, 0.4);
+            animation: heartbeatLine 2s ease-in-out infinite;
+            z-index: 3;
+        }
+        
+        @keyframes heartbeatLine {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+            50% { transform: translate(-50%, -50%) scale(1.3); opacity: 0.8; }
+        }
+        
+        /* Progress dots */
+        .progress-dots {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 10px;
+        }
+        
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 100, 100, 0.5);
+            transition: all 0.3s ease;
+        }
+        
+        .dot.active {
+            background-color: #ff1a1a;
+            box-shadow: 0 0 10px #ff0000;
+            transform: scale(1.2);
+        }
+
+        /* Sparkle effect around heart */
+        .sparkle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #fff, 0 0 20px #ff6666;
+            animation: sparkleTwinkle 3s infinite;
+            z-index: 6;
+        }
+
+        @keyframes sparkleTwinkle {
+            0%, 100% { opacity: 0; transform: scale(0) rotate(0deg); }
+            50% { opacity: 1; transform: scale(1.5) rotate(180deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Background Glow -->
+        <div class="heart-glow"></div>
+        
+        <!-- Heartbeat line animation -->
+        <div class="heartbeat-line"></div>
+        
+        <!-- Background Elements -->
+        <div class="background-elements" id="backgroundElements"></div>
+        
+        <!-- Enhanced Bigger Heart -->
+        <div class="heart-container">
+            <div class="heart">
+                <div class="heart-inner"></div>
+            </div>
+        </div>
+        
+        <!-- Updated Message - Moved Lower -->
+        <div class="message">
+            <div class="sorry-text">Sorry Annu</div>
+            <div class="name-text"></div>
+            <div class="romantic-text" id="romanticText">
+                <!-- Text lines will be added dynamically -->
+            </div>
+            <div class="progress-dots" id="progressDots">
+                <!-- Dots will be added dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Create floating hearts
+        const backgroundElements = document.getElementById('backgroundElements');
+        const romanticText = document.getElementById('romanticText');
+        const progressDots = document.getElementById('progressDots');
+        
+        function createFloatingHearts() {
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤';
+            heart.classList.add('floating-heart');
+            
+            // Random position
+            heart.style.left = Math.random() * 100 + 'vw';
+            
+            // Random size
+            const size = Math.random() * 20 + 15;
+            heart.style.fontSize = size + 'px';
+            
+            // Fast animation duration
+            const duration = Math.random() * 3 + 2;
+            heart.style.animationDuration = duration + 's';
+            
+            // Random delay
+            heart.style.animationDelay = Math.random() * 1 + 's';
+            
+            backgroundElements.appendChild(heart);
+            
+            // Remove heart after animation completes
+            setTimeout(() => {
+                heart.remove();
+            }, duration * 1000);
+        }
+        
+        // Create fast particles
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            
+            // Random position
+            particle.style.left = Math.random() * 100 + 'vw';
+            particle.style.top = Math.random() * 100 + 'vh';
+            
+            // Fast animation
+            particle.style.animationDuration = (Math.random() * 1 + 1) + 's';
+            
+            backgroundElements.appendChild(particle);
+            
+            // Remove particle after animation completes
+            setTimeout(() => {
+                particle.remove();
+            }, 2000);
+        }
+
+        // Create sparkles around heart
+        function createSparkle() {
+            const sparkle = document.createElement('div');
+            sparkle.classList.add('sparkle');
+            
+            // Position around heart
+            const angle = Math.random() * 360;
+            const distance = 150 + Math.random() * 100;
+            const x = Math.cos(angle * Math.PI / 180) * distance;
+            const y = Math.sin(angle * Math.PI / 180) * distance;
+            
+            sparkle.style.left = `calc(50% + ${x}px)`;
+            sparkle.style.top = `calc(30% + ${y}px)`;
+            
+            // Random size and animation delay
+            sparkle.style.width = (4 + Math.random() * 6) + 'px';
+            sparkle.style.height = sparkle.style.width;
+            sparkle.style.animationDelay = Math.random() * 2 + 's';
+            
+            backgroundElements.appendChild(sparkle);
+            
+            // Remove sparkle after animation completes
+            setTimeout(() => {
+                sparkle.remove();
+            }, 3000);
+        }
+        
+        // Create elements frequently for faster effect
+        setInterval(createFloatingHearts, 100);
+        setInterval(createParticle, 80);
+        setInterval(createSparkle, 200);
+        
+        // Create initial elements
+        for (let i = 0; i < 50; i++) {
+            setTimeout(createFloatingHearts, i * 60);
+            setTimeout(createParticle, i * 30);
+            setTimeout(createSparkle, i * 100);
+        }
+        
+        // Step-by-step text animation
+        const textSteps = [
+            ["Gusa katam kro ab"],
+            ["Kab tk naraz raho gi"],
+            ["Please forgive me Annu"],
+            ["I can't see you upset"],
+            ["You're my everything"],
+            ["Please don't be angry"],
+            ["Man jao na motii"],
+            ["I miss your smile"],
+            ["Tumhare bina kuch accha nahi lagta"],
+            ["Please talk to me"],
+            ["I promise I'll be better"],
+            ["Just give me one more chance"],
+            ["Your happiness means everything"],
+            ["Let me make it up to you"]
+        ];
+        
+        let currentStep = 0;
+        
+        // Create progress dots
+        textSteps.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (index === 0) dot.classList.add('active');
+            progressDots.appendChild(dot);
+        });
+        
+        function showNextText() {
+            // Remove all current text lines
+            romanticText.innerHTML = '';
+            
+            // Add current text line
+            const textLine = document.createElement('div');
+            textLine.classList.add('text-line');
+            textLine.textContent = textSteps[currentStep][0];
+            romanticText.appendChild(textLine);
+            
+            // Update progress dots
+            document.querySelectorAll('.dot').forEach((dot, index) => {
+                if (index === currentStep) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+            
+            // Animate text in
+            setTimeout(() => {
+                textLine.classList.add('active');
+            }, 100);
+            
+            // Move to next step after delay
+            setTimeout(() => {
+                // Animate text out
+                textLine.classList.remove('active');
+                
+                // Move to next step
+                currentStep = (currentStep + 1) % textSteps.length;
+                
+                // Show next text after fade out
+                setTimeout(showNextText, 800);
+            }, 3000);
+        }
+        
+        // Start the text animation
+        showNextText();
+        
+        // Heart grows on click with special effect
+        document.addEventListener('click', function() {
+            const heart = document.querySelector('.heart');
+            
+            heart.style.transform = 'scale(1.5)';
+            
+            // Create explosion of hearts on click
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                    createFloatingHearts();
+                }, i * 40);
+            }
+            
+            // Create extra sparkles on click
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    createSparkle();
+                }, i * 50);
+            }
+            
+            // Special message on click
+            const specialMessages = [
+                "Man jao na please!",
+                "itni Zalim dost meri💖",
+                "I love you so much!"
+            ];
+            
+            // Clear current text
+            romanticText.innerHTML = '';
+            
+            // Show special messages one by one
+            specialMessages.forEach((message, index) => {
+                setTimeout(() => {
+                    romanticText.innerHTML = '';
+                    const textLine = document.createElement('div');
+                    textLine.classList.add('text-line');
+                    textLine.textContent = message;
+                    romanticText.appendChild(textLine);
+                    
+                    setTimeout(() => {
+                        textLine.classList.add('active');
+                    }, 100);
+                }, index * 1500);
+            });
+            
+            // Return to normal after special messages
+            setTimeout(() => {
+                heart.style.transform = 'scale(1)';
+                setTimeout(() => {
+                    showNextText();
+                }, 1000);
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
